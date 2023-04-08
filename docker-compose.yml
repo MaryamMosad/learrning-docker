@@ -1,17 +1,19 @@
 version: "3.9"
 services:
-  api : 
+  api:
     build: .
-    ports: 
+    ports:
       - 3000:3000
-    volumes :
-      - ./:/app
     environment:
-      DB_URL : 'mongodb://db/learning-docker'
-  db :
-    image : mongo:6.0.4
-    ports : 
+      DB_URL: "mongodb://db/learning-docker"
+    volumes:
+      - ./:/app
+  db:
+    image: mongo:6.0.4
+    ports:
       - 27017:27017
-volumes :
-  learning-docker :
-    external : true
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
